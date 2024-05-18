@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emoti-meter Gauging the Feels from Words</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .table-users {
+        margin: 20px auto;
+        max-width: 800px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+      }
+
+      .header {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid #ccc;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      .search-button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        margin-top: 20px;
+        cursor: pointer;
+        text-decoration: none; /* Remove underlines from links */
+        display: inline-block; /* Display as inline-block to not take full width */
+      }
+
+      .search-button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="table-users">
+      <div class="header">
+        Emoti-meter Gauging the Feels from Words<span class="emoji">🤖</span>
+      </div>
+      <form action="/review" method="POST"></form>
+      <table cellspacing="0">
+        <tr>
+          <th>Product</th>
+          <th>Name</th>
+          <th>Rating</th>
+          <th>Comment Heading</th>
+          <th width="230">Comments</th>
+          <th>Sentiments</th>
+        </tr>
+        {% for review in reviews %}
+        <tr>
+          <td>{{ review['Product'] }}</td>
+          <td>{{ review['Name'] }}</td>
+          <td>{{ review['Rating'] }}</td>
+          <td>{{ review['CommentHead'] }}</td>
+          <td>{{ review['Comment'] }}</td>
+          <td>{{ review['Sentiment'] }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <form action="/" method="GET">
+        <button class="search-button" type="submit">
+          Search Another Product
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
